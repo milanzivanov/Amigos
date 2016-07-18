@@ -1,0 +1,614 @@
+/* ----------------- Libraries
+----------------------------------------------------------------------- */
+@import "compass";
+@import "config/reset";
+@import "config/variables";
+/* ----------------- Helpers
+----------------------------------------------------------------------- */
+@import "helpers/mixins";
+@import "helpers/helpers";
+@import "helpers/ie";
+/* ----------------- Base
+----------------------------------------------------------------------- */
+@import "base/layout";
+@import "base/typography";
+/* ----------------- Layout
+----------------------------------------------------------------------- */
+/* ----------------- Lib
+----------------------------------------------------------------------- */
+/* ----------------- Layout
+----------------------------------------------------------------------- */
+@import "layout/buttons";
+@import "layout/forms";
+@import "layout/icons";
+/* ----------------- Partials
+----------------------------------------------------------------------- */
+@import "partials/footer";
+@import "partials/header";
+/* ----------------- scss main
+----------------------------------------------------------------------- */
+body {
+  font: 14px/1.4 'Raleway', "Lato", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-image: url(https://media-mediatemple.netdna-ssl.com/wp-content/themes/smashing-magazine/assets/images/smbg.png);
+  height: 100%;
+  width: 100%;
+}
+.loader_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100000000000000000000000000000000;
+  background: #3A3A3A;
+  .loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    //transform: translate(-50%, -50%);
+    margin: -50px 0 0 -50px;
+    width: 100px;
+    height: 100px;
+    border: 3px solid transparent;
+    border-top-color: #3498bd;
+    border-radius: 50%;
+        -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+                animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+    &:before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 3px solid transparent;
+      border-top-color: #e74c3c;
+      border-radius: 50%;
+            -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+                    animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border: 3px solid transparent;
+      border-top-color: #f9c922;
+      border-radius: 50%;
+            -webkit-animation: spin 4s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+                    animation: spin 4s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+    }
+  }
+}
+.container_main {
+  @include float-primary;
+  height: 100vh;
+  position: relative;
+  z-index: 100;
+  .section_one {
+    @include float-primary;
+    height: 100%;
+    position: relative;   
+  }
+}
+
+  .section_one {
+    @include float-primary;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    z-index: 99999999; 
+  }
+
+.header {
+  @include float-primary;
+  //background: rgba(41,41,41,0.9);
+  //box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
+    @include breakpoint (mobile) {
+      //background: rgba(255,255,255,0.7);
+      box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+    }  
+  .wrapper {
+    position: relative;
+    .mobile_nav__toggle {
+      width: 50px;
+      height: 50px;
+      margin: 5px 20px 0 0;
+      cursor: pointer;
+      display: inline-block;
+      float: right;
+      display: none;
+      @include breakpoint (mobile) {
+        display: inline-block;
+        margin: 15px 20px 0 0;
+      }
+      span {
+        content: "";
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: #666;
+        background: #fff;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        top: 24px;
+      }
+      span:before {
+        content: "";
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: #666;
+        background: #fff;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        top: 15px;
+      }
+      span:after {
+        content: "";
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: #666;
+        background: #fff;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        top: -17px;
+      }
+    }
+    .is_open span {
+      background: transparent;
+    }
+    .is_open span:before {
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      top: 0;
+    }
+    .is_open span:after {
+      -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+      transform-origin: center;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      top: -2px;
+    } 
+    .logo {
+      padding: 5px 0 0 5px;
+      float: left;
+      @include breakpoint (mobile) {
+        padding: 5px 0 0 10px;
+      }
+      h1 {
+        font-size: 31px;
+        a {
+          display: block;
+            picture {
+              display: block;
+            }
+        }
+      }
+    }
+    .nav_primary {
+      display: inline-block;
+      float: right;
+      @include breakpoint (mobile) {
+        display: none;
+      }
+      ul {
+        li {
+          float: left;
+          a {
+            display: block;
+            padding: 27px 10px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 17px;
+            transition: all 0.6s ease-in-out;
+            text-shadow: 1px 1px 1px #666;
+            text-transform: uppercase;
+            font-weight: 700;
+            &:hover {
+              transition: all 0.3s ease-in-out;
+              color: #ff6600;
+            }
+          }
+        }
+      }
+    }
+    .nav_mobile {
+      float: right;
+      position: absolute;
+      top: 61px;
+      background: rgba(179,149,198,0.8);
+      background: rgba(62, 60, 64, 0.8);
+      width: 100%;
+      left: 0;
+      display: none;
+      transform: translateX(-100%);
+      transition: transform 0.6s ease-in-out;
+      ul {
+        width: 100%;
+        li {
+          width: 100%;
+          a {
+            width: 100%;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid #9165AC;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            font-family: sans-serif;
+            transition: all 0.6s ease-in-out;
+            &:hover {
+              background: #9165ac;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+    .is_open {
+      @include breakpoint (mobile) {
+        display: block;
+        transform: translateX(0);
+        transition: all 0.6s ease-in-out;
+        z-index: 9999999;
+        top: 76px;
+      }     
+    }
+  }
+}
+.direction_arrow {
+    /* width: 100%; */
+    float: left;
+    display: inline-block;
+    position: absolute;
+    /* justify-content: center; */
+    padding: 10px 0;
+    /* align-items: flex-end; */
+    /* height: 95vh; */
+    bottom: 0;
+    transform: translateX(-50%);
+    left: 50%;
+    text-align: center;
+    z-index: 999;
+    @include breakpoint (tablet) {
+      bottom: 55px;
+    }    
+    @include breakpoint (mobile) {
+      bottom: 55px;
+    }    
+  .direction_btn {
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    transition: all 0.6s ease;
+    display: block;
+// animacija za strelicu dole
+/*     position: relative;
+    -webkit-animation-name: drop;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-play-state: running;
+    animation-name: drop;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-play-state: running; */
+
+    &:hover {
+      color: #8A329A;
+    }
+    @include breakpoint (tablet) {
+      &:hover {
+        color: #00FF7F;
+      }
+    }
+    @include breakpoint (mobile) {
+      &:hover {
+        color: #4C67A0;
+      }
+    }
+  }
+}
+.contact {
+  width: 100%;
+  float: left;
+  position: relative;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  z-index: 999999999;
+  box-shadow: 0px 0px 3px #D2C9BF;
+  .wrapper {
+    .columns {
+      width: 100%;
+      float: left;
+      overflow: hidden;
+      padding: 10px 0;
+      @include breakpoint (mobile) {
+      }
+      .text-icon {
+        width: 100%;
+        padding: 20px 0;
+        text-align: center;
+        border-bottom: 1px solid #3A3A3A;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        &:hover {
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        transition: all 0.3s ease;
+        }
+        .icon-font {
+          font-family: 'FontAwesome', sans-serif;
+          font-size: 30px;
+          line-height: 50px;
+          text-align: center;
+          color: #8A329A;
+          @include breakpoint (tablet) {
+            color: #00FF7F;
+          }
+          @include breakpoint (mobile) {
+            font-size: 23px;
+            color: #4C67A0;
+          }
+        }
+         h4, a {
+            color: #f2f2f2;
+            font-size: 35px;
+            line-height: 1.35;
+            letter-spacing: -.08rem;
+            @include breakpoint (tablet) {
+              font-size: 27px;
+            }
+            @include breakpoint (mobile) {
+              font-size: 20px;
+            }
+        }
+      }
+      .last_border {
+        border-bottom: none;
+      }    
+    }
+  }
+}
+.footer {
+  float: left;
+  width: 100%;
+  background: rgba(255,255,255,0.7);
+  position: relative;
+  text-align: center;
+  z-index: 999999999;
+  .wrapper {
+    .social_networks {
+    float: right;
+    @include breakpoint (mobile) {
+      float: none;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #A6ABA0;
+    }
+      li {
+        display: inline-block;
+        a {
+          display: block;
+          padding: 15px 5px;
+          .fa-facebook-square {
+            color: rgba(59,89,152,0.9);
+            transition: all 0.3s ease-in-out;
+          }
+          .fa-twitter-square {
+            color: rgba(85,172,238,0.9);
+            transition: all 0.3s ease-in-out;
+          }
+          .fa-youtube-square {
+            color: rgba(187,0,0,0.9);
+            transition: all 0.3s ease-in-out;
+          }
+          .fa-facebook-square:hover {
+            color: #3b5998;
+            transform: rotate(10deg);
+          }
+          .fa-twitter-square:hover {
+            color:  #55acee;
+            transform: rotate(-10deg);
+          }
+          .fa-youtube-square:hover {
+            color:  #bb0000;
+            transform: rotate(10deg);
+          }
+        }
+      }
+    }
+    .rights {
+      color: #252121;
+      padding: 25px 0;
+      float: left;
+      @include breakpoint (tablet) {
+        padding: 25px 5px;
+      }
+      @include breakpoint (mobile) {
+        float: none;
+        width: 100%;
+        text-align: center;
+      }
+      p {
+        span {
+          font-weight: bold;
+          color: #8A329A;
+        }
+      }
+    }
+  }
+}
+.direction_arrow__up {
+    width: 100%;
+    float: left;
+    display: flex;
+    z-index: 999999999;
+    justify-content: center;
+    padding: 5px 0;
+    align-items: flex-end;
+    background: rgba(138,50,154,0.8);
+
+    background: rgba(41,41,41,0.9);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
+    position: relative;
+    @include breakpoint (tablet) {
+      background: rgba(0,255,127,0.8);
+    }
+    @include breakpoint (mobile) {
+      background: rgba(76,103,160,0.8);
+    }
+    .direction_btn__up {
+      color: #fff;
+      text-shadow: 1px 1px 2px #000;
+      transition: all 0.6s ease;
+      &:hover {
+        color: #8A329A;
+      }
+      @include breakpoint (mobile) {
+        padding: 0;
+        &:hover {
+          color: #4C67A0;
+        }
+      }
+      @include breakpoint (tablet) {
+        padding: 0;
+        &:hover {
+          color: #00FF7F;
+        }
+      }
+    }
+}
+/* ----------------- maximages !!!!
+----------------------------------------------------------------------- */
+/* I wanted to center my loader */
+#cycle-loader {
+  height: 32px;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  position: absolute;
+  top: 50%;
+  width: 32px;
+  z-index: 999999;
+}
+/*I want to avoid jumpiness as the JS loads, so I initially hide my cycle*/
+#maximage {
+  display:none;/* Only use this if you fade it in again after the images load */
+  position:fixed !important;
+}
+/*Set my gradient above all images*/
+#gradient {
+  left: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+#arrow_left, 
+#arrow_right {
+  bottom: 30px;
+  height: 67px;
+  position: absolute;
+  right: 20px;
+  width: 36px;
+  z-index: 1000;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+#arrow_left {
+  left: 20px;
+}     
+#arrow_left:hover, 
+#arrow_right:hover {
+  bottom: 29px;
+}
+#arrow_left:active, 
+#arrow_right:active {
+  bottom: 28px;
+}     
+a {color:#666;text-decoration:none;}
+a:hover {text-decoration:underline;}
+.youtube-video, video {
+  left: 0;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+}
+/* Set my logo in center h/v */
+#logo {
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  position: absolute;
+  z-index: 1000;
+  font-size: 21px;
+}
+#logo img {
+  width:100%;
+}
+.fa-play-circle-o {
+  color: rgba(187,0,0,0.7);
+  transition: 0.6s ease-in-out;
+  &:hover {
+    color: rgba(68,180,73,0.7);
+    transform: scale(1.3);
+  }
+}
+
+// preloader
+
+@-webkit-keyframes spin {
+  0%   { 
+  -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */ 
+      -ms-transform: rotate(0deg);  /* IE 9 */
+          transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */ 
+   }
+  100% {
+  -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+      -ms-transform: rotate(360deg);  /* IE 9 */
+          transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+  }
+}
+@keyframes spin {
+  0%   { 
+  -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */ 
+      -ms-transform: rotate(0deg);  /* IE 9 */
+          transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */ 
+   }
+  100% {
+  -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+      -ms-transform: rotate(360deg);  /* IE 9 */
+          transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+  }
+}
+
+
+// animacija za strelicu dole
+/* @-webkit-keyframes drop {
+  0%   { top:0px;  opacity: 0;}
+  30%  { top:10px; opacity: 1;}
+  100% { top:25px; opacity: 0;}
+}
+
+@keyframes drop {
+  0%   { top:0px;  opacity: 0;}
+  30%  { top:10px; opacity: 1;}
+  100% { top:25px; opacity: 0;}
+} */
+
+
+
